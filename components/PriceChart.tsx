@@ -130,7 +130,7 @@ export default function PriceChart() {
             >
               DEXScreener
             </a>
-            . Vous aurez besoin de l'adresse du contrat et du nom du token.
+            . Vous aurez besoin de l&apos;adresse du contrat et du nom du token.
           </p>
         </div>
       </div>
