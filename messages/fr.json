@@ -1,0 +1,48 @@
+{
+  "common": {
+    "title": "MAINE COON",
+    "subtitle": "Token MCN",
+    "onBase": "Sur Base",
+    "price": "Prix",
+    "marketCap": "Capitalisation",
+    "volume24h": "Volume (24h)",
+    "contractAddress": "Adresse du contrat",
+    "buy": "Acheter",
+    "sell": "Vendre",
+    "swap": "Échanger",
+    "bridge": "Pont",
+    "analytics": "Analyses",
+    "recentTransfers": "Transferts récents",
+    "language": "Langue",
+    "theme": "Thème",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair"
+  },
+  "hero": {
+    "title": "MAINE COON",
+    "subtitle": "Le Token Meme Premium sur Base",
+    "description": "Rejoignez la fierté des détenteurs de Maine Coon. Construit sur la blockchain Base pour des transactions rapides et peu coûteuses.",
+    "cta": "Commencer"
+  },
+  "stats": {
+    "price": "Prix actuel",
+    "marketCap": "Capitalisation",
+    "volume": "Volume 24h",
+    "holders": "Détenteurs"
+  },
+  "features": {
+    "title": "Pourquoi MAINE COON?",
+    "fast": {
+      "title": "Ultra Rapide",
+      "description": "Construit sur Base pour des transactions instantanées"
+    },
+    "lowCost": {
+      "title": "Frais réduits",
+      "description": "Coûts de transaction minimaux"
+    },
+    "community": {
+      "title": "Communauté forte",
+      "description": "Rejoignez une communauté grandissante de détenteurs"
+    }
+  }
+}

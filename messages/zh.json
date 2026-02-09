@@ -1,0 +1,48 @@
+{
+  "common": {
+    "title": "缅因猫",
+    "subtitle": "MCN代币",
+    "onBase": "在Base上",
+    "price": "价格",
+    "marketCap": "市值",
+    "volume24h": "24小时交易量",
+    "contractAddress": "合约地址",
+    "buy": "购买",
+    "sell": "出售",
+    "swap": "交换",
+    "bridge": "桥接",
+    "analytics": "分析",
+    "recentTransfers": "最近转账",
+    "language": "语言",
+    "theme": "主题",
+    "darkMode": "深色模式",
+    "lightMode": "浅色模式"
+  },
+  "hero": {
+    "title": "缅因猫",
+    "subtitle": "Base上的高级Meme代币",
+    "description": "加入缅因猫持有者的骄傲。建立在Base区块链上，实现快速、低成本的交易。",
+    "cta": "开始"
+  },
+  "stats": {
+    "price": "当前价格",
+    "marketCap": "市值",
+    "volume": "24小时交易量",
+    "holders": "持有者"
+  },
+  "features": {
+    "title": "为什么选择缅因猫？",
+    "fast": {
+      "title": "超快速度",
+      "description": "建立在Base上，实现即时交易"
+    },
+    "lowCost": {
+      "title": "低费用",
+      "description": "最低的交易成本"
+    },
+    "community": {
+      "title": "强大社区",
+      "description": "加入不断增长的持有者社区"
+    }
+  }
+}
