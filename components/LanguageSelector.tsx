@@ -35,10 +35,11 @@ export default function LanguageSelector() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-dark-100 hover:bg-gray-200 dark:hover:bg-dark-50 transition-colors border border-gold/20"
+        className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-dark-100/50 hover:bg-dark-100 transition-colors border border-gold/10 hover:border-gold/30"
+        aria-label="Select language"
       >
-        <Globe className="h-4 w-4 text-gray-700 dark:text-gray-300" />
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+        <Globe className="h-4 w-4 text-gray-400" />
+        <span className="text-sm font-medium text-gray-300">
           {localeNames[locale]}
         </span>
       </button>
@@ -49,15 +50,15 @@ export default function LanguageSelector() {
             className="fixed inset-0 z-10"
             onClick={() => setIsOpen(false)}
           />
-          <div className="absolute right-0 mt-2 w-32 rounded-lg bg-white dark:bg-dark-100 border border-gold/20 shadow-lg z-20">
+          <div className="absolute right-0 mt-2 w-36 rounded-xl bg-dark-100/95 backdrop-blur-xl border border-gold/20 shadow-gold-lg z-20 overflow-hidden">
             {locales.map((loc) => (
               <button
                 key={loc}
                 onClick={() => changeLocale(loc)}
-                className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-dark-50 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                className={`w-full text-left px-4 py-3 text-sm transition-colors hover:bg-gold/10 ${
                   locale === loc
-                    ? 'text-gold-500 font-semibold'
-                    : 'text-gray-700 dark:text-gray-300'
+                    ? 'text-gold-500 font-semibold bg-gold/5'
+                    : 'text-gray-300'
                 }`}
               >
                 {localeNames[loc]}

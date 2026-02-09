@@ -51,4 +51,9 @@ body {
   .shadow-gold-lg {
     box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
   }
+  
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
 }

@@ -25,11 +25,14 @@ export default function Features() {
   ];
 
   return (
-    <section className="py-16 bg-dark-200 dark:bg-dark-100">
+    <section className="py-20 bg-dark-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-gold">
-          {t('title')}
-        </h2>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-gold">
+            {t('title')}
+          </h2>
+          <p className="text-gray-400 text-sm uppercase tracking-wider">Why Choose MAINE COON</p>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => {
@@ -37,17 +40,17 @@ export default function Features() {
             return (
               <div
                 key={index}
-                className="bg-gradient-to-br from-dark-100 to-dark-200 dark:from-dark-50 dark:to-dark-100 p-8 rounded-xl border border-gold/20 shadow-gold hover:shadow-gold-lg transition-all transform hover:scale-105"
+                className="group relative bg-gradient-to-br from-dark-50/50 to-dark-100/50 backdrop-blur-sm p-10 rounded-2xl border border-gold/10 hover:border-gold/30 shadow-gold hover:shadow-gold-lg transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="mb-4">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold-gradient">
+                <div className="mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gold-gradient group-hover:scale-110 transition-transform duration-300">
                     <Icon className="h-8 w-8 text-black" />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-gold-500 mb-3">
+                <h3 className="text-2xl font-bold text-gold-500 mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-300 dark:text-gray-400">
+                <p className="text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>
               </div>

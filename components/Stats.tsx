@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import { DollarSign, TrendingUp, BarChart3, Users, ExternalLink } from 'lucide-react';
 
 interface CryptoData {
   price: string;
@@ -19,12 +20,8 @@ export default function Stats() {
   });
 
   useEffect(() => {
-    // Vous pouvez remplacer cela par un appel API réel
-    // Pour l'instant, on utilise les données de thirdweb
     const fetchData = async () => {
       try {
-        // Ici vous pouvez ajouter un appel API pour récupérer les données en temps réel
-        // Par exemple depuis CoinGecko, DEXScreener, ou directement depuis la blockchain
         setData({
           price: '$0.000003',
           marketCap: 'N/A',
@@ -36,7 +33,6 @@ export default function Stats() {
     };
 
     fetchData();
-    // Rafraîchir toutes les 30 secondes
     const interval = setInterval(fetchData, 30000);
     return () => clearInterval(interval);
   }, []);
@@ -45,61 +41,71 @@ export default function Stats() {
     {
       label: t('price'),
       value: data.price,
-      icon: '💰',
+      icon: DollarSign,
+      color: 'text-gold-500',
     },
     {
       label: t('marketCap'),
       value: data.marketCap,
-      icon: '📊',
+      icon: BarChart3,
+      color: 'text-gold-400',
     },
     {
       label: t('volume'),
       value: data.volume24h,
-      icon: '📈',
+      icon: TrendingUp,
+      color: 'text-gold-500',
     },
     {
       label: t('holders'),
       value: 'Growing',
-      icon: '👥',
+      icon: Users,
+      color: 'text-gold-400',
     },
   ];
 
   return (
-    <section className="py-16 bg-white dark:bg-dark-100">
+    <section className="py-20 bg-dark-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-dark-100 to-dark-200 dark:from-dark-50 dark:to-dark-100 p-6 rounded-xl border border-gold/20 shadow-gold hover:shadow-gold-lg transition-all"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-3xl">{stat.icon}</span>
-                <div className="h-1 w-1 rounded-full bg-gold-500 animate-pulse"></div>
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={index}
+                className="group relative bg-gradient-to-br from-dark-50/50 to-dark-100/50 backdrop-blur-sm p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-300 hover:shadow-gold-lg hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <div className={`p-3 rounded-xl bg-gold/10 ${stat.color} group-hover:bg-gold/20 transition-colors`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <div className="h-2 w-2 rounded-full bg-gold-500/60 animate-pulse"></div>
+                </div>
+                <h3 className="text-xs text-gray-400 mb-3 uppercase tracking-wider font-medium">
+                  {stat.label}
+                </h3>
+                <p className={`text-3xl font-bold ${stat.color} tracking-tight`}>{stat.value}</p>
               </div>
-              <h3 className="text-sm text-gray-400 dark:text-gray-500 mb-2 uppercase tracking-wide">
-                {stat.label}
-              </h3>
-              <p className="text-2xl font-bold text-gold-500">{stat.value}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
         
-        <div className="mt-8 p-6 bg-dark-100 dark:bg-dark-50 rounded-xl border border-gold/20">
-          <p className="text-sm text-gray-400 dark:text-gray-500 mb-2">
+        <div className="mt-12 p-8 bg-gradient-to-br from-dark-50/30 to-dark-100/30 backdrop-blur-sm rounded-2xl border border-gold/10">
+          <p className="text-sm text-gray-400 mb-4 font-medium uppercase tracking-wide">
             {tCommon('contractAddress')}
           </p>
-          <div className="flex items-center gap-2 flex-wrap">
-            <code className="text-gold-500 font-mono text-sm break-all">
+          <div className="flex items-center gap-3 flex-wrap">
+            <code className="text-gold-400 font-mono text-sm break-all bg-dark-200/50 px-4 py-2 rounded-lg border border-gold/10">
               0x8e627241838b660cc90F96601952dcD7f47b7831
             </code>
             <a
               href="https://basescan.org/address/0x8e627241838b660cc90F96601952dcD7f47b7831"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold-500 hover:text-gold-400 transition-colors"
+              className="p-2 text-gold-500 hover:text-gold-400 hover:bg-gold/10 rounded-lg transition-all"
+              aria-label="View on BaseScan"
             >
-              🔗
+              <ExternalLink className="h-5 w-5" />
             </a>
           </div>
         </div>

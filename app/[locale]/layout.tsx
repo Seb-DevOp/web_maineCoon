@@ -32,7 +32,7 @@ export default async function LocaleLayout({
       <body>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
-            <div className="min-h-screen bg-white dark:bg-dark-200 transition-colors">
+            <div className="min-h-screen bg-dark-200 transition-colors">
               <Header />
               <main>{children}</main>
               <Footer />

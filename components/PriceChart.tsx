@@ -64,73 +64,83 @@ export default function PriceChart() {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-dark-100 dark:to-dark-200">
+    <section className="py-20 bg-dark-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 gradient-gold">
-          {t('price')} Chart
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-gold">
+            {t('price')} Chart
+          </h2>
+          <p className="text-gray-400 text-sm uppercase tracking-wider">24 Hour Price History</p>
+        </div>
         
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gold-500"></div>
           </div>
         ) : (
-          <div className="bg-white dark:bg-dark-100 p-6 rounded-xl border border-gold/20 shadow-gold">
-            <ResponsiveContainer width="100%" height={400}>
+          <div className="bg-gradient-to-br from-dark-50/50 to-dark-100/50 backdrop-blur-sm p-8 rounded-2xl border border-gold/10 shadow-gold">
+            <ResponsiveContainer width="100%" height={450}>
               <LineChart data={priceData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#333" opacity={0.3} />
                 <XAxis
                   dataKey="time"
                   stroke="#ffd700"
-                  style={{ fontSize: '12px' }}
+                  style={{ fontSize: '11px', fontWeight: '500' }}
+                  tick={{ fill: '#999' }}
                 />
                 <YAxis
                   stroke="#ffd700"
-                  style={{ fontSize: '12px' }}
+                  style={{ fontSize: '11px', fontWeight: '500' }}
+                  tick={{ fill: '#999' }}
                   tickFormatter={formatPrice}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#1a1a1a',
+                    backgroundColor: '#0d0d0d',
                     border: '1px solid #ffd700',
-                    borderRadius: '8px',
+                    borderRadius: '12px',
+                    padding: '12px',
                   }}
-                  formatter={(value: number) => formatPrice(value)}
+                  labelStyle={{ color: '#ffd700', fontWeight: '600' }}
+                  formatter={(value: number) => [formatPrice(value), 'Price']}
                 />
                 <Line
                   type="monotone"
                   dataKey="price"
                   stroke="#ffd700"
-                  strokeWidth={2}
-                  dot={{ fill: '#ffd700', r: 4 }}
-                  activeDot={{ r: 6 }}
+                  strokeWidth={3}
+                  dot={false}
+                  activeDot={{ r: 6, fill: '#ffd700', strokeWidth: 2, stroke: '#000' }}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
         )}
         
-        <div className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-          <p>
-            💡 Pour afficher les données réelles, vous pouvez intégrer une API comme{' '}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-400 mb-2">
+            To display real-time data, integrate an API such as{' '}
             <a
               href="https://www.coingecko.com/en/api"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold-500 hover:underline"
+              className="text-gold-500 hover:text-gold-400 transition-colors font-medium"
             >
               CoinGecko
             </a>
-            {' '}ou{' '}
+            {' '}or{' '}
             <a
               href="https://docs.dexscreener.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold-500 hover:underline"
+              className="text-gold-500 hover:text-gold-400 transition-colors font-medium"
             >
               DEXScreener
             </a>
-            . Vous aurez besoin de l&apos;adresse du contrat et du nom du token.
+            .
+          </p>
+          <p className="text-xs text-gray-500">
+            Contract address and token information required for integration.
           </p>
         </div>
       </div>
