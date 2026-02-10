@@ -30,10 +30,18 @@ export default function Hero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
-                href="https://thirdweb.com/base/0x8e627241838b660cc90F96601952dcD7f47b7831"
+                href="https://app.uniswap.org/#/swap?chain=base&outputCurrency=0x8e627241838b660cc90F96601952dcD7f47b7831"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group px-10 py-4 bg-gold-gradient text-black font-semibold rounded-xl hover:shadow-gold-lg transition-all duration-300 transform hover:scale-105 hover:brightness-110"
+              >
+                {t('buyUniswap')}
+              </a>
+              <a
+                href="https://thirdweb.com/base/0x8e627241838b660cc90F96601952dcD7f47b7831"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group px-10 py-4 border border-gold/40 text-gold-400 font-semibold rounded-xl hover:bg-gold/10 transition-all duration-300"
               >
                 {t('cta')}
               </a>

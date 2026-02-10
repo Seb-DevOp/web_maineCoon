@@ -17,6 +17,14 @@ export default function Footer() {
           
           <div className="flex flex-wrap justify-center gap-8">
             <a
+              href="https://app.uniswap.org/#/swap?chain=base&outputCurrency=0x8e627241838b660cc90F96601952dcD7f47b7831"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gold-500 transition-colors text-sm font-medium"
+            >
+              Uniswap
+            </a>
+            <a
               href="https://basescan.org/address/0x8e627241838b660cc90F96601952dcD7f47b7831"
               target="_blank"
               rel="noopener noreferrer"

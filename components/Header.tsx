@@ -40,6 +40,15 @@ export default function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
             <a
+              href="https://app.uniswap.org/#/swap?chain=base&outputCurrency=0x8e627241838b660cc90F96601952dcD7f47b7831"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-gray-400 hover:text-gold-500 transition-colors relative group"
+            >
+              {t('buy')}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a
               href="https://thirdweb.com/base/0x8e627241838b660cc90F96601952dcD7f47b7831"
               target="_blank"
               rel="noopener noreferrer"
