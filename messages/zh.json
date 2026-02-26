@@ -19,17 +19,17 @@
     "lightMode": "浅色模式"
   },
   "hero": {
-    "title": "缅因猫",
-    "subtitle": "Base上的高级Meme代币",
-    "description": "加入缅因猫持有者的骄傲。建立在Base区块链上，实现快速、低成本的交易。",
-    "cta": "开始",
-    "buyUniswap": "在 Uniswap 购买"
+    "title": "MCN",
+    "line1": "构建于 Base。",
+    "line2": "为长期延续而结构化。",
+    "viewContract": "查看合约",
+    "buyOnBase": "在 Base 上购买"
   },
   "stats": {
-    "price": "当前价格",
-    "marketCap": "市值",
-    "volume": "24小时交易量",
-    "holders": "持有者"
+    "btcPrice": "BTC 市场规模（约）",
+    "btcDominance": "BTC 市场占比",
+    "ethPrice": "ETH 市场规模（约）",
+    "ethDominance": "ETH 市场占比"
   },
   "features": {
     "title": "为什么选择缅因猫？",
@@ -45,5 +45,79 @@
       "title": "强大社区",
       "description": "加入不断增长的持有者社区"
     }
+  },
+  "origins": {
+    "title": "起源",
+    "intro1": "MCN 由两位自 2016 年起活跃于加密生态的兄弟发起。",
+    "intro2": "他们早期参与了比特币和以太坊的多个周期，体验了波动与结构性增长。",
+    "perspective": "MCN 体现了这种长期视角：",
+    "principles": {
+      "discipline": "以纪律胜过炒作。",
+      "structure": "以结构胜过速度。",
+      "longevity": "以长期价值胜过短期投机。"
+    },
+    "conclusion": "简洁。稳健。可信。"
+  },
+  "token": {
+    "title": "代币结构",
+    "fixedSupply": "固定总量：1,000,000,000",
+    "noMint": "无增发函数",
+    "noTax": "无代币级别税费",
+    "liquidity": "在 Uniswap V3（Base）上提供流动性",
+    "verifiable": "合约公开且可验证",
+    "contractLabel": "合约地址",
+    "copy": "复制"
+  },
+  "roadmap": {
+    "title": "路线图",
+    "subtitle": "按阶段推进的长期结构",
+    "phase1": {
+      "title": "阶段 I — 基础",
+      "items": {
+        "0": "在 Base 上部署代币",
+        "1": "在 Uniswap 上激活流动性",
+        "2": "透明、无增发函数的合约",
+        "3": "启动社区建设"
+      }
+    },
+    "phase2": {
+      "title": "阶段 II — 有机增长",
+      "items": {
+        "0": "持币地址逐步扩展",
+        "1": "流动性稳步提升",
+        "2": "提升在生态中的可见度"
+      }
+    },
+    "phase3": {
+      "title": "阶段 III — 承诺",
+      "items": {
+        "0": "计划放弃合约所有权",
+        "1": "明确长期定位",
+        "2": "由社区主导"
+      }
+    },
+    "phase4": {
+      "title": "阶段 IV — 结构成熟",
+      "items": {
+        "0": "合约不可更改",
+        "1": "去中心化所有权得到确认",
+        "2": "可持续的流动性框架",
+        "3": "社区的有机延续",
+        "4": "在整个生态中的战略定位"
+      }
+    }
+  },
+  "transparency": {
+    "title": "透明度",
+    "ownership": "计划放弃合约所有权",
+    "liquidity": "流动性将持续加强",
+    "alignment": "以社区为核心的长期对齐",
+    "onchain": "结构完全在链上可验证"
+  },
+  "footer": {
+    "brand": "MCN",
+    "builtOnBase": "构建于 Base",
+    "longTerm": "长期结构",
+    "rights": "保留所有权利。"
   }
 }

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import LanguageSelector from './LanguageSelector';
 import ThemeToggle from './ThemeToggle';
+import { Twitter, Instagram } from 'lucide-react';
 
 export default function Header() {
   const t = useTranslations('common');
@@ -31,31 +32,32 @@ export default function Header() {
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              href="/"
-              className="text-sm font-medium text-gray-400 hover:text-gold-500 transition-colors relative group"
-            >
-              Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
-            </Link>
+          <nav className="hidden md:flex items-center space-x-6">
             <a
-              href="https://app.uniswap.org/#/swap?chain=base&outputCurrency=0x8e627241838b660cc90F96601952dcD7f47b7831"
+              href="https://base.app/profile/mikapro?tab=posts"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-gray-400 hover:text-gold-500 transition-colors relative group"
+              className="text-xs font-medium text-gray-400 hover:text-gold-500 transition-colors"
             >
-              {t('buy')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
+              Base
             </a>
             <a
-              href="https://thirdweb.com/base/0x8e627241838b660cc90F96601952dcD7f47b7831"
+              href="https://x.com/mainecoonmcn?s=21"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-gray-400 hover:text-gold-500 transition-colors relative group"
+              className="text-xs font-medium text-gray-400 hover:text-gold-500 transition-colors inline-flex items-center gap-1"
             >
-              {t('swap')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
+              <Twitter className="h-4 w-4" />
+              X
+            </a>
+            <a
+              href="https://www.instagram.com/mainecoon_mcn?igsh=MW5nNnpsMGNpOGlvbg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-medium text-gray-400 hover:text-gold-500 transition-colors inline-flex items-center gap-1"
+            >
+              <Instagram className="h-4 w-4" />
+              Instagram
             </a>
           </nav>
 

@@ -2,30 +2,45 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import { DollarSign, TrendingUp, BarChart3, Users, ExternalLink } from 'lucide-react';
+import { DollarSign, TrendingUp, BarChart3, ExternalLink } from 'lucide-react';
 
-interface CryptoData {
-  price: string;
-  marketCap: string;
-  volume24h: string;
+interface MarketData {
+  btcPrice: string;
+  btcDominance: string;
+  ethPrice: string;
+  ethDominance: string;
 }
 
 export default function Stats() {
   const t = useTranslations('stats');
   const tCommon = useTranslations('common');
-  const [data, setData] = useState<CryptoData>({
-    price: '$0.000003',
-    marketCap: 'N/A',
-    volume24h: 'N/A',
+  const [data, setData] = useState<MarketData>({
+    btcPrice: '$0',
+    btcDominance: '0%',
+    ethPrice: '$0',
+    ethDominance: '0%',
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const res = await fetch('https://api.coingecko.com/api/v3/global');
+        const json = await res.json();
+
+        const btc = json.data?.market_cap_percentage?.btc ?? 0;
+        const eth = json.data?.market_cap_percentage?.eth ?? 0;
+        const btcPrice = json.data?.market_cap_percentage
+          ? json.data.total_market_cap.usd * (btc / 100)
+          : 0;
+        const ethPrice = json.data?.market_cap_percentage
+          ? json.data.total_market_cap.usd * (eth / 100)
+          : 0;
+
         setData({
-          price: '$0.000003',
-          marketCap: 'N/A',
-          volume24h: 'N/A',
+          btcPrice: `$${btcPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
+          btcDominance: `${btc.toFixed(1)}%`,
+          ethPrice: `$${ethPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
+          ethDominance: `${eth.toFixed(1)}%`,
         });
       } catch (error) {
         console.error('Error fetching crypto data:', error);
@@ -39,27 +54,27 @@ export default function Stats() {
 
   const stats = [
     {
-      label: t('price'),
-      value: data.price,
+      label: t('btcPrice'),
+      value: data.btcPrice,
       icon: DollarSign,
       color: 'text-gold-500',
     },
     {
-      label: t('marketCap'),
-      value: data.marketCap,
+      label: t('btcDominance'),
+      value: data.btcDominance,
       icon: BarChart3,
       color: 'text-gold-400',
     },
     {
-      label: t('volume'),
-      value: data.volume24h,
+      label: t('ethPrice'),
+      value: data.ethPrice,
       icon: TrendingUp,
       color: 'text-gold-500',
     },
     {
-      label: t('holders'),
-      value: 'Growing',
-      icon: Users,
+      label: t('ethDominance'),
+      value: data.ethDominance,
+      icon: BarChart3,
       color: 'text-gold-400',
     },
   ];

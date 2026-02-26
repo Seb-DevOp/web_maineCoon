@@ -19,17 +19,17 @@
     "lightMode": "Light Mode"
   },
   "hero": {
-    "title": "MAINE COON",
-    "subtitle": "The Premium Meme Token on Base",
-    "description": "Join the pride of Maine Coon holders. Built on Base blockchain for fast, low-cost transactions.",
-    "cta": "Get Started",
-    "buyUniswap": "Buy on Uniswap"
+    "title": "MCN",
+    "line1": "Built on Base.",
+    "line2": "Structured for long-term continuity.",
+    "viewContract": "View Contract",
+    "buyOnBase": "Buy on Base"
   },
   "stats": {
-    "price": "Current Price",
-    "marketCap": "Market Cap",
-    "volume": "24h Volume",
-    "holders": "Holders"
+    "btcPrice": "BTC market size (approx.)",
+    "btcDominance": "BTC dominance",
+    "ethPrice": "ETH market size (approx.)",
+    "ethDominance": "ETH dominance"
   },
   "features": {
     "title": "Why MAINE COON?",
@@ -45,5 +45,79 @@
       "title": "Strong Community",
       "description": "Join a growing community of holders"
     }
+  },
+  "origins": {
+    "title": "Origins",
+    "intro1": "MCN was initiated by two brothers active in the crypto ecosystem since 2016.",
+    "intro2": "Early participants in Bitcoin and Ethereum cycles, they experienced both volatility and structural growth.",
+    "perspective": "MCN reflects that long-term perspective:",
+    "principles": {
+      "discipline": "Discipline over hype.",
+      "structure": "Structure over speed.",
+      "longevity": "Longevity over speculation."
+    },
+    "conclusion": "Simple. Clean. Credible."
+  },
+  "token": {
+    "title": "Token Structure",
+    "fixedSupply": "Fixed supply: 1,000,000,000",
+    "noMint": "No mint function",
+    "noTax": "No token-level tax",
+    "liquidity": "Liquidity active on Uniswap V3 (Base)",
+    "verifiable": "Public and verifiable contract",
+    "contractLabel": "Contract address",
+    "copy": "Copy"
+  },
+  "roadmap": {
+    "title": "Roadmap",
+    "subtitle": "Structured progression over time",
+    "phase1": {
+      "title": "Phase I — Foundation",
+      "items": {
+        "0": "Token deployed on Base",
+        "1": "Liquidity active on Uniswap",
+        "2": "Transparent, no mint contract",
+        "3": "Community building begins"
+      }
+    },
+    "phase2": {
+      "title": "Phase II — Organic Growth",
+      "items": {
+        "0": "Gradual holder expansion",
+        "1": "Sustainable liquidity increase",
+        "2": "Ecosystem visibility"
+      }
+    },
+    "phase3": {
+      "title": "Phase III — Commitment",
+      "items": {
+        "0": "Ownership renouncement",
+        "1": "Long-term positioning",
+        "2": "Community-led"
+      }
+    },
+    "phase4": {
+      "title": "Phase IV — Structural Maturity",
+      "items": {
+        "0": "Contract immutable",
+        "1": "Decentralized ownership confirmed",
+        "2": "Sustainable liquidity framework",
+        "3": "Organic community continuity",
+        "4": "Ecosystem-level positioning"
+      }
+    }
+  },
+  "transparency": {
+    "title": "Transparency",
+    "ownership": "Ownership renouncement planned",
+    "liquidity": "Liquidity progressively strengthened",
+    "alignment": "Community-led long-term alignment",
+    "onchain": "Fully on-chain verifiable structure"
+  },
+  "footer": {
+    "brand": "MCN",
+    "builtOnBase": "Built on Base",
+    "longTerm": "Long-term structure",
+    "rights": "All rights reserved."
   }
 }

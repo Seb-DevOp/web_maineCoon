@@ -1,5 +1,9 @@
 import { setRequestLocale } from 'next-intl/server';
 import Hero from '@/components/Hero';
+import Origins from '@/components/Origins';
+import TokenFundamentals from '@/components/TokenFundamentals';
+import Roadmap from '@/components/Roadmap';
+import Transparency from '@/components/Transparency';
 import Stats from '@/components/Stats';
 import Features from '@/components/Features';
 import PriceChart from '@/components/PriceChart';
@@ -15,6 +19,10 @@ export default async function HomePage({
   return (
     <div>
       <Hero />
+      <Origins />
+      <TokenFundamentals />
+      <Roadmap />
+      <Transparency />
       <Stats />
       <PriceChart />
       <Features />
