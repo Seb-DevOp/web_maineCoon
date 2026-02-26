@@ -26,10 +26,9 @@
     "buyOnBase": "Buy on Base"
   },
   "stats": {
-    "btcPrice": "BTC market size (approx.)",
-    "btcDominance": "BTC dominance",
-    "ethPrice": "ETH market size (approx.)",
-    "ethDominance": "ETH dominance"
+    "marketCap": "Market Cap",
+    "dominance": "Dominance",
+    "change7d": "7d Change"
   },
   "features": {
     "title": "Why MAINE COON?",

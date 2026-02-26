@@ -26,10 +26,9 @@
     "buyOnBase": "在 Base 上购买"
   },
   "stats": {
-    "btcPrice": "BTC 市场规模（约）",
-    "btcDominance": "BTC 市场占比",
-    "ethPrice": "ETH 市场规模（约）",
-    "ethDominance": "ETH 市场占比"
+    "marketCap": "市值",
+    "dominance": "市值占比",
+    "change7d": "7天变动"
   },
   "features": {
     "title": "为什么选择缅因猫？",

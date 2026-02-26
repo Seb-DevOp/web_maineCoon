@@ -7,35 +7,27 @@ export default function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <section className="relative overflow-hidden bg-black py-20 md:py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,215,0,0.06),transparent_65%)]" />
-      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center gap-10">
-          <div className="relative w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60">
-            <div className="absolute inset-0 bg-gold/20 blur-3xl rounded-full" />
-            <div className="relative w-full h-full rounded-full border border-gold/30 bg-dark-200/60 backdrop-blur">
-              <Image
-                src="/logo.png"
-                alt="MCN Logo"
-                fill
-                className="object-contain drop-shadow-2xl"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-              {t('title')}
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300">
-              {t('line1')}
-            </p>
-            <p className="text-lg md:text-xl text-gray-300">
-              {t('line2')}
-            </p>
-          </div>
-
+    <section className="relative overflow-hidden bg-black">
+      {/* Bannière plein écran */}
+      <div className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px]">
+        <Image
+          src="/banniere.png"
+          alt="MCN Banner"
+          fill
+          priority
+          className="object-cover object-center opacity-80"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-10 text-center px-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-3">
+            {t('title')}
+          </h1>
+          <p className="text-base md:text-lg text-gray-300">
+            {t('line1')}
+          </p>
+          <p className="text-base md:text-lg text-gray-300">
+            {t('line2')}
+          </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://basescan.org/address/0x8e627241838b660cc90F96601952dcD7f47b7831"

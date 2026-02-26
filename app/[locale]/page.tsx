@@ -6,7 +6,6 @@ import Roadmap from '@/components/Roadmap';
 import Transparency from '@/components/Transparency';
 import Stats from '@/components/Stats';
 import Features from '@/components/Features';
-import PriceChart from '@/components/PriceChart';
 
 export default async function HomePage({
   params
@@ -24,7 +23,6 @@ export default async function HomePage({
       <Roadmap />
       <Transparency />
       <Stats />
-      <PriceChart />
       <Features />
     </div>
   );

@@ -26,10 +26,9 @@
     "buyOnBase": "Acheter sur Base"
   },
   "stats": {
-    "btcPrice": "Capitalisation BTC (approx.)",
-    "btcDominance": "Dominance BTC",
-    "ethPrice": "Capitalisation ETH (approx.)",
-    "ethDominance": "Dominance ETH"
+    "marketCap": "Capitalisation",
+    "dominance": "Dominance",
+    "change7d": "Évolution 7 jours"
   },
   "features": {
     "title": "Pourquoi MAINE COON?",

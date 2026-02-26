@@ -2,45 +2,81 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import { DollarSign, TrendingUp, BarChart3, ExternalLink } from 'lucide-react';
+import { DollarSign, BarChart3, TrendingUp, ExternalLink } from 'lucide-react';
 
-interface MarketData {
-  btcPrice: string;
-  btcDominance: string;
-  ethPrice: string;
-  ethDominance: string;
+interface AssetStats {
+  marketCap: number;
+  dominance: number;
+  change7d: number;
+}
+
+interface MarketStats {
+  btc: AssetStats;
+  eth: AssetStats;
+}
+
+function formatMarketCap(value: number): string {
+  if (!value || value <= 0) return '$0';
+
+  const trillions = value / 1_000_000_000_000;
+  const billions = value / 1_000_000_000;
+
+  if (trillions >= 1) {
+    return `$${trillions.toFixed(2)}T`;
+  }
+
+  if (billions >= 1) {
+    return `$${billions.toFixed(2)}B`;
+  }
+
+  return `$${value.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+}
+
+function formatPercent(value: number): string {
+  if (!Number.isFinite(value)) return '0%';
+  const sign = value > 0 ? '+' : '';
+  return `${sign}${value.toFixed(1)}%`;
 }
 
 export default function Stats() {
   const t = useTranslations('stats');
   const tCommon = useTranslations('common');
-  const [data, setData] = useState<MarketData>({
-    btcPrice: '$0',
-    btcDominance: '0%',
-    ethPrice: '$0',
-    ethDominance: '0%',
+
+  const [stats, setStats] = useState<MarketStats>({
+    btc: { marketCap: 0, dominance: 0, change7d: 0 },
+    eth: { marketCap: 0, dominance: 0, change7d: 0 },
   });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('https://api.coingecko.com/api/v3/global');
-        const json = await res.json();
+        const [globalRes, marketsRes] = await Promise.all([
+          fetch('https://api.coingecko.com/api/v3/global'),
+          fetch(
+            'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum&price_change_percentage=7d'
+          ),
+        ]);
 
-        const btc = json.data?.market_cap_percentage?.btc ?? 0;
-        const eth = json.data?.market_cap_percentage?.eth ?? 0;
-        const btcPrice = json.data?.market_cap_percentage
-          ? json.data.total_market_cap.usd * (btc / 100)
-          : 0;
-        const ethPrice = json.data?.market_cap_percentage
-          ? json.data.total_market_cap.usd * (eth / 100)
-          : 0;
+        const globalJson = await globalRes.json();
+        const marketsJson = await marketsRes.json();
 
-        setData({
-          btcPrice: `$${btcPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
-          btcDominance: `${btc.toFixed(1)}%`,
-          ethPrice: `$${ethPrice.toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
-          ethDominance: `${eth.toFixed(1)}%`,
+        const btcMarket = marketsJson.find((c: any) => c.id === 'bitcoin');
+        const ethMarket = marketsJson.find((c: any) => c.id === 'ethereum');
+
+        const btcDominance = globalJson.data?.market_cap_percentage?.btc ?? 0;
+        const ethDominance = globalJson.data?.market_cap_percentage?.eth ?? 0;
+
+        setStats({
+          btc: {
+            marketCap: btcMarket?.market_cap ?? 0,
+            dominance: btcDominance,
+            change7d: btcMarket?.price_change_percentage_7d_in_currency ?? 0,
+          },
+          eth: {
+            marketCap: ethMarket?.market_cap ?? 0,
+            dominance: ethDominance,
+            change7d: ethMarket?.price_change_percentage_7d_in_currency ?? 0,
+          },
         });
       } catch (error) {
         console.error('Error fetching crypto data:', error);
@@ -48,63 +84,84 @@ export default function Stats() {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 30000);
+    const interval = setInterval(fetchData, 300000);
     return () => clearInterval(interval);
   }, []);
 
-  const stats = [
+  const cards = [
     {
-      label: t('btcPrice'),
-      value: data.btcPrice,
-      icon: DollarSign,
-      color: 'text-gold-500',
+      key: 'btc',
+      title: 'Bitcoin (BTC)',
+      data: stats.btc,
+      accent: 'text-gold-400',
     },
     {
-      label: t('btcDominance'),
-      value: data.btcDominance,
-      icon: BarChart3,
-      color: 'text-gold-400',
+      key: 'eth',
+      title: 'Ethereum (ETH)',
+      data: stats.eth,
+      accent: 'text-gold-500',
     },
-    {
-      label: t('ethPrice'),
-      value: data.ethPrice,
-      icon: TrendingUp,
-      color: 'text-gold-500',
-    },
-    {
-      label: t('ethDominance'),
-      value: data.ethDominance,
-      icon: BarChart3,
-      color: 'text-gold-400',
-    },
-  ];
+  ] as const;
 
   return (
     <section className="py-20 bg-dark-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-dark-50/50 to-dark-100/50 backdrop-blur-sm p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-300 hover:shadow-gold-lg hover:-translate-y-1"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <div className={`p-3 rounded-xl bg-gold/10 ${stat.color} group-hover:bg-gold/20 transition-colors`}>
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <div className="h-2 w-2 rounded-full bg-gold-500/60 animate-pulse"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {cards.map((card) => (
+            <div
+              key={card.key}
+              className="group relative bg-gradient-to-br from-dark-50/50 to-dark-100/50 backdrop-blur-sm p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-300 hover:shadow-gold-lg hover:-translate-y-1"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div className={`p-3 rounded-xl bg-gold/10 ${card.accent} group-hover:bg-gold/20 transition-colors`}>
+                  <DollarSign className="h-6 w-6" />
                 </div>
-                <h3 className="text-xs text-gray-400 mb-3 uppercase tracking-wider font-medium">
-                  {stat.label}
-                </h3>
-                <p className={`text-3xl font-bold ${stat.color} tracking-tight`}>{stat.value}</p>
+                <div className="h-2 w-2 rounded-full bg-gold-500/60 animate-pulse"></div>
               </div>
-            );
-          })}
+
+              <h3 className="text-sm text-gray-300 mb-4 font-semibold">
+                {card.title}
+              </h3>
+
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center justify-between text-gray-300">
+                  <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400">
+                    <BarChart3 className="h-3 w-3" />
+                    <span>{t('marketCap')}</span>
+                  </div>
+                  <span className="font-semibold text-white">
+                    {formatMarketCap(card.data.marketCap)}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between text-gray-300">
+                  <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400">
+                    <TrendingUp className="h-3 w-3" />
+                    <span>{t('dominance')}</span>
+                  </div>
+                  <span className="font-semibold">
+                    {formatPercent(card.data.dominance)}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between text-gray-300">
+                  <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400">
+                    <TrendingUp className="h-3 w-3" />
+                    <span>{t('change7d')}</span>
+                  </div>
+                  <span
+                    className={`font-semibold ${
+                      card.data.change7d > 0 ? 'text-emerald-400' : card.data.change7d < 0 ? 'text-red-400' : 'text-gray-300'
+                    }`}
+                  >
+                    {formatPercent(card.data.change7d)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        
+
         <div className="mt-12 p-8 bg-gradient-to-br from-dark-50/30 to-dark-100/30 backdrop-blur-sm rounded-2xl border border-gold/10">
           <p className="text-sm text-gray-400 mb-4 font-medium uppercase tracking-wide">
             {tCommon('contractAddress')}
