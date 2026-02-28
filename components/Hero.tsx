@@ -38,7 +38,7 @@ export default function Hero() {
               {t('viewContract')}
             </a>
             <a
-              href="https://app.uniswap.org/#/swap?chain=base&outputCurrency=0x8e627241838b660cc90F96601952dcD7f47b7831"
+              href="https://base.app/coin/base-mainnet/0x8e627241838b660cc90f96601952dcd7f47b7831"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 bg-gold-gradient text-black text-sm font-semibold rounded-full hover:brightness-110 hover:shadow-gold-lg transition-all"
